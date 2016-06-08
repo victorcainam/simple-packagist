@@ -1,0 +1,19 @@
+{
+    "name": "simplesoftwareio/simple-packagist",
+    "description": "Easy to use library to pull in statistics about any package on packagist.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simple Software LLC",
+            "email": "support@simplesoftware.io"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "SimpleSoftwareIO\\Packagist\\": "src/"
+        }
+    }
+}
