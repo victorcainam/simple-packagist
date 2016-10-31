@@ -9,7 +9,9 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
+    "require": {
+        "guzzlehttp/guzzle": "6.2.*"
+    },
     "require-dev": {},
     "autoload": {
         "psr-4": {
