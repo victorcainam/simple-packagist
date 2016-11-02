@@ -3,7 +3,8 @@
 namespace SimpleSoftwareIO\Packagist;
 
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Cache\CacheManager as Cache;
+use Illuminate\Support\Collection;
 
 class Packagist
 {
@@ -21,21 +22,72 @@ class Packagist
      */
     protected $cache;
 
+    /**
+     * Packagist constructor.
+     *
+     * @param Client $client
+     * @param Cache $cache
+     */
     public function __construct(Client $client, Cache $cache)
     {
         $this->client = $client;
         $this->cache = $cache;
     }
 
-    public function vendor($vendor)
+    /**
+     * Gets all of the packages on Packagist.
+     *
+     * @return Packages
+     */
+    public function all()
     {
-        if (is_string($vendor)) $vendor = ['vendor' => $vendor];
-
-        return new Packages($this->client, $this->cache, $vendor);
+        return $this->packages();
     }
 
-    public function search(array $params)
+    /**
+     * Gets all of the packages on Packagist for a vendor.
+     *
+     * @param $vendor
+     * @return Collection
+     */
+    public function vendor($vendor)
     {
-        return new Search($this->client, $this->cache, $params);
+        return $this->packages(['vendor' => $vendor]);
+    }
+
+    /**
+     * Searches Packagist for all packages of a type.
+     *
+     * @param $type
+     * @return Collection
+     */
+    public function type($type)
+    {
+        return $this->packages(['type' => $type]);
+    }
+
+    /**
+     * Gets all packages for the matching params.
+     *
+     * @param array $params
+     * @return Packages
+     */
+    public function packages($params = [])
+    {
+        if (is_string($params)) $params = ['vendor' => $params];
+
+        return new Packages($this->client, $this->cache, $params);
+    }
+
+    /**
+     * Gets the information for a package.
+     *
+     * @param $vendor
+     * @param $package
+     * @return Package
+     */
+    public function package($vendor, $package)
+    {
+        return new Package($this->client, $this->cache, $vendor, $package);
     }
 }

@@ -2,7 +2,9 @@
 
 namespace SimpleSoftwareIO\Packagist;
 
-interface Request
+abstract class Request
 {
-    public function get();
+    abstract public function get();
+
+    abstract protected function endPoint();
 }

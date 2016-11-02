@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use Illuminate\Cache\CacheManager as Cache;
 use Illuminate\Support\Collection;
 
-class Package extends Request
+class Downloads extends Request
 {
     use MakeRequest;
 
@@ -46,12 +46,12 @@ class Package extends Request
     protected $package;
 
     /**
-     * Package constructor.
+     * Downloads constructor.
      *
      * @param Client $client
      * @param Cache $cache
-     * @param string $vendor
-     * @param string $package
+     * @param $vendor
+     * @param $package
      */
     public function __construct(Client $client, Cache $cache, $vendor, $package)
     {
@@ -62,51 +62,28 @@ class Package extends Request
     }
 
     /**
-     * Fires the API request.
+     * Fires off the API request.
      *
      * @return Collection
      */
     public function get()
     {
-        return new Collection($this->request()['package']);
+        $response = $this->request()['package']['downloads'];
+
+        $collection = new Collection($response['total']);
+        $collection = $collection->merge(['versions' => $response['versions']]);
+
+        return $collection;
     }
 
     /**
-     * Constructs the API endpoint.
+     * Generates the API endpoint.
      *
      * @return string
      */
     protected function endPoint()
     {
-        return "{$this->endPoint}/{$this->vendor}/{$this->package}.json";
+        return "{$this->endPoint}/{$this->vendor}/{$this->package}/downloads.json";
     }
 
-    /**
-     * Returns a collection containing the downloads.
-     *
-     * @param null|string $version
-     * @return Collection
-     */
-    public function downloads($version = null)
-    {
-        $downloads = new Downloads($this->client, $this->cache, $this->vendor, $this->package);
-
-        if ( ! empty($version)) return $downloads->get()['versions'][$version];
-
-        return $downloads->get();
-    }
-
-    /**
-     * Used to retrieve different statistics about a package.
-     *
-     * @param string $name
-     * @param array $version
-     * @return mixed
-     */
-    public function __call($name, array $version)
-    {
-        if ( ! empty($version)) return $this->get()['versions'][$version[0]][$name];
-
-        return $this->get()[$name];
-    }
 }

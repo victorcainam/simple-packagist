@@ -3,7 +3,6 @@
 namespace SimpleSoftwareIO\Packagist;
 
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 
 class PackagistServiceProvider extends ServiceProvider
@@ -22,10 +21,12 @@ class PackagistServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('packagist', function () {;
+        $cache = $this->app->make('cache');
+
+        $this->app->singleton('packagist', function () use ($cache) {;
             return new Packagist(
                 new Client,
-                new Cache
+                $cache
             );
         });
     }
