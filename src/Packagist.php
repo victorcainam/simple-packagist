@@ -76,7 +76,7 @@ class Packagist
     {
         if (is_string($params)) $params = ['vendor' => $params];
 
-        return new Packages($this->client, $this->cache, $params);
+        return (new Packages($this->client, $this->cache, $params))->get();
     }
 
     /**

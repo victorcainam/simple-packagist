@@ -5,6 +5,13 @@ namespace SimpleSoftwareIO\Packagist;
 trait MakeRequest
 {
     /**
+     * The namespace to store everything under within the cache.
+     *
+     * @var string
+     */
+    protected $namespace = 'simple-packagist';
+
+    /**
      * Makes the API request.
      *
      * @return mixed
@@ -35,6 +42,6 @@ trait MakeRequest
     {
         $params = serialize($params);
 
-        return sha1($endPoint . $params);
+        return $this->namespace . sha1($endPoint . $params);
     }
 }
