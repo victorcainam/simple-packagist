@@ -1,20 +1,20 @@
 Simple Packagist
 ================
 
-##This is pre-released software. The API may change.  Use at your own risk.
+##This is pre-release software. The API may change.  Use at your own risk.
 
 - [Introduction](#docs-introduction)
-- [Configuration](#docs-configuration)
+- [installation](#docs-installation)
 - [Cache](#docs-cache)
 - [Usage](#docs-usage)
 - [Advance Usage](#docs-advance-usage)
 
 <a id="docs-introduction"></a>
 ## Introduction
-Simple Packagist is an easy to use package for Laravel that is used to retrieve statics about packages stored on the popular composer website, Packagist.  Our aim is to provide an easy to use library to access this information.
+Simple Packagist is a package for Laravel that retrieves statistics about any of the packages stored on the popular composer website Packagist.  Our aim is to provide an easy to use library to access this information.
 
-<a id="docs-configuration"></a>
-## Configuration
+<a id="docs-installation"></a>
+## Installation
 
 #### Composer
 
@@ -39,7 +39,7 @@ Finally, register the `'Packagist' => SimpleSoftwareIO\QrCode\Facades\Packagist:
 <a id="docs-cache"></a>
 ## Cache
 
-All information retreived from Packagist is stored within your applications configured cache for 10 minutes.
+All information retreived from Packagist is stored within your application's configured cache for 10 minutes.
 
 <a id="docs-usage"></a>
 ## Usage
@@ -48,7 +48,7 @@ All methods return a [Laravel Collection.](https://laravel.com/docs/collections)
 
 #### All
 
-The all method returns a collection of all of the packages stored upon Packagist.
+The all method returns a collection of all of the packages stored on Packagist.
 
     Packagist::all();
     
@@ -157,7 +157,7 @@ You may also search the Packagist repository by using the `packages` method.
       
 #### Package
 
-Retreiveing a package is also very easy.  Simply use the `package` method and then retrieve the information using the `get` method`.
+Retreiveing a package is also very easy.  Simply use the `package` method and then retrieve the information using the `get` method.
 
     Packagist::package($vendor, $package)->get();
     Packagist::package('simplesoftwareio', 'simple-qrcode')->get();
@@ -235,7 +235,7 @@ Some methods support the ability to get information for a specific version numbe
     
     //Returns the description for version number 1.5.0 for simplesoftwareio/simple-qrcode
     
-The following support passing in a version number.
+The following supports passing in a version number:
 
 |Method|Data Type|Returns|
 |---|---|---|
