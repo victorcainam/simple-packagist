@@ -4,7 +4,7 @@ Simple Packagist
 ##This is pre-release software. The API may change.  Use at your own risk.
 
 - [Introduction](#docs-introduction)
-- [installation](#docs-installation)
+- [Installation](#docs-installation)
 - [Cache](#docs-cache)
 - [Usage](#docs-usage)
 - [Advance Usage](#docs-advance-usage)
@@ -39,7 +39,11 @@ Finally, register the `'Packagist' => SimpleSoftwareIO\QrCode\Facades\Packagist:
 <a id="docs-cache"></a>
 ## Cache
 
-All information retreived from Packagist is stored within your application's configured cache for 10 minutes.
+All information retrieved from Packagist is stored within your application's configured cache for a default of 60 minutes.  You may configure the amount of time a package is cache for by adding the following to your `config/cache.php` file.
+
+    'packagist' => [
+        'length' => 45
+    ],
 
 <a id="docs-usage"></a>
 ## Usage
