@@ -22,7 +22,7 @@ trait MakeRequest
 
         $key = $this->create_key($this->endPoint(), $params);
 
-        return $this->cache->remember($key, 10, function() use ($params) {
+        return $this->cache->remember($key, $this->cacheLength, function() use ($params) {
             $response = $this->client->get($this->endPoint(), [
                 'query' => $params
             ]);

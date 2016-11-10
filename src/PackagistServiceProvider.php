@@ -21,12 +21,14 @@ class PackagistServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $cache = $this->app->make('cache');
+        $this->app->singleton('packagist', function ($app) {
 
-        $this->app->singleton('packagist', function () use ($cache) {;
+            $cacheLength = $app['config']->has('cache.packagist.length') ? $app['config']['cache.packagist.length'] : 60;
+
             return new Packagist(
                 new Client,
-                $cache
+                $app['cache'],
+                $cacheLength
             );
         });
     }

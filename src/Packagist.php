@@ -23,15 +23,23 @@ class Packagist
     protected $cache;
 
     /**
+     * The amount of time to cache the results.
+     *
+     * @var integer
+     */
+    protected $cacheLength;
+
+    /**
      * Packagist constructor.
      *
      * @param Client $client
      * @param Cache $cache
      */
-    public function __construct(Client $client, Cache $cache)
+    public function __construct(Client $client, Cache $cache, $cacheLength)
     {
         $this->client = $client;
         $this->cache = $cache;
+        $this->cacheLength = $cacheLength;
     }
 
     /**
@@ -76,7 +84,7 @@ class Packagist
     {
         if (is_string($params)) $params = ['vendor' => $params];
 
-        return (new Packages($this->client, $this->cache, $params))->get();
+        return (new Packages($this->client, $this->cache, $this->cacheLength, $params))->get();
     }
 
     /**
@@ -88,6 +96,6 @@ class Packagist
      */
     public function package($vendor, $package)
     {
-        return new Package($this->client, $this->cache, $vendor, $package);
+        return new Package($this->client, $this->cache, $this->cacheLength, $vendor, $package);
     }
 }

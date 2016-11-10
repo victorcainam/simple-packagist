@@ -25,10 +25,18 @@ class Packages extends Request
     protected $cache;
 
     /**
-     * Packagist constructor.
+     * The default cache length.
      *
-     * @param Client $client
-     * @param Cache $cache
+     * @var integer
+     */
+    protected $cacheLength;
+
+    /**
+     * The search parameters.
+     *
+     * @var array
+     */
+    protected $params;
 
     /**
      * The API endpoint.
@@ -43,12 +51,14 @@ class Packages extends Request
      * Packages constructor.
      * @param Client $client
      * @param Cache $cache
+     * @param $cacheLength
      * @param array $params
      */
-    public function __construct(Client $client, Cache $cache, array $params)
+    public function __construct(Client $client, Cache $cache, $cacheLength, array $params)
     {
         $this->client = $client;
         $this->cache = $cache;
+        $this->cacheLength = $cacheLength;
         $this->params = $params;
     }
 

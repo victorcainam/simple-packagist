@@ -25,11 +25,11 @@ class Package extends Request
     protected $cache;
 
     /**
-     * The API endpoint.
+     * The default cache length.
      *
-     * @var string
+     * @var integer
      */
-    protected $endPoint = 'https://packagist.org/packages';
+    protected $cacheLength;
 
     /**
      * The package's vendor.
@@ -46,14 +46,22 @@ class Package extends Request
     protected $package;
 
     /**
+     * The API endpoint.
+     *
+     * @var string
+     */
+    protected $endPoint = 'https://packagist.org/packages';
+
+    /**
      * Package constructor.
      *
      * @param Client $client
      * @param Cache $cache
+     * @param $cacheLength
      * @param string $vendor
      * @param string $package
      */
-    public function __construct(Client $client, Cache $cache, $vendor, $package)
+    public function __construct(Client $client, Cache $cache, $cacheLength, $vendor, $package)
     {
         $this->client = $client;
         $this->cache = $cache;
@@ -89,7 +97,7 @@ class Package extends Request
      */
     public function downloads($version = null)
     {
-        $downloads = new Downloads($this->client, $this->cache, $this->vendor, $this->package);
+        $downloads = new Downloads($this->client, $this->cache, $this->cacheLength, $this->vendor, $this->package);
 
         if ( ! empty($version)) return $downloads->get()['versions'][$version];
 
