@@ -42,6 +42,6 @@ trait MakeRequest
     {
         $params = serialize($params);
 
-        return $this->namespace . sha1($endPoint . $params);
+        return $this->namespace . ':' . sha1($endPoint . $params);
     }
 }
