@@ -99,7 +99,7 @@ class Packages extends Request
     {
         $split = explode('/', $package);
 
-        return new Package($this->client, $this->cache, $split[0], $split[1]);
+        return new Package($this->client, $this->cache, $this->cacheLength, $split[0], $split[1]);
     }
 
     /**
