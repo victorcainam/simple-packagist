@@ -65,6 +65,7 @@ class Package extends Request
     {
         $this->client = $client;
         $this->cache = $cache;
+        $this->cacheLength = $cacheLength;
         $this->vendor = $vendor;
         $this->package = $package;
     }
