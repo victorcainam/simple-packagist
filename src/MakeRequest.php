@@ -22,13 +22,26 @@ trait MakeRequest
 
         $key = $this->create_key($this->endPoint(), $params);
 
-        return $this->cache->remember($key, $this->cacheLength, function() use ($params) {
-            $response = $this->client->get($this->endPoint(), [
-                'query' => $params
-            ]);
+        if ( ! $this->cacheLength) return $this->fetch($params);
 
-            return json_decode($response->getBody(), true);
+        return $this->cache->remember($key, $this->cacheLength, function() use ($params) {
+            return $this->fetch($params);
         });
+    }
+
+    /**
+     * Performs the Guzzle request to the endpoint with the params.
+     *
+     * @param $params
+     * @return mixed
+     */
+    protected function fetch($params)
+    {
+        $response = $this->client->get($this->endPoint(), [
+            'query' => $params
+        ]);
+
+        return json_decode($response->getBody(), true);
     }
 
     /**
