@@ -3,7 +3,7 @@
 namespace SimpleSoftwareIO\Packagist;
 
 use GuzzleHttp\Client;
-use Illuminate\Cache\CacheManager as Cache;
+use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Support\Collection;
 
 class Downloads extends Request

@@ -3,8 +3,7 @@
 namespace SimpleSoftwareIO\Packagist;
 
 use GuzzleHttp\Client;
-use Illuminate\Cache\CacheManager as Cache;
-use Illuminate\Support\Collection;
+use Illuminate\Contracts\Cache\Factory as Cache;
 
 class Packagist
 {
