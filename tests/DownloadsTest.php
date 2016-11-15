@@ -72,8 +72,7 @@ class DownloadsTest extends TestCase
      */
     public function test_downloads_returns_the_correct_values($key)
     {
-//        var_dump($this->mockDownloads->get());exit;
-        $this->assertEquals($this->mockDownloads->get()[$key], $this->getResponse()['package']['downloads']['total'][$key]);
+        $this->assertEquals($this->getResponse()['package']['downloads']['total'][$key], $this->mockDownloads->get()[$key]);
     }
 
     /**
@@ -81,7 +80,7 @@ class DownloadsTest extends TestCase
      */
     public function test_downloads_returns_the_correct_values_for_versions_numbers($key)
     {
-        $this->assertEquals($this->mockDownloads->get('dev-master')[$key], $this->getResponse()['package']['downloads']['versions']['dev-master'][$key]);
+        $this->assertEquals($this->getResponse()['package']['downloads']['versions']['dev-master'][$key], $this->mockDownloads->get('dev-master')[$key]);
     }
 
     public function test_it_calls_the_correct_endpoint()
@@ -90,7 +89,7 @@ class DownloadsTest extends TestCase
 
         $endpoint = strval($this->history[0]['request']->getUri());
 
-        $this->assertEquals($endpoint, 'https://packagist.org/packages/simplesoftwareio/simple-qrcode/downloads.json');
+        $this->assertEquals('https://packagist.org/packages/simplesoftwareio/simple-qrcode/downloads.json', $endpoint);
     }
 
     /**
