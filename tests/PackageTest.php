@@ -80,7 +80,7 @@ class PackageTest extends TestCase
 
     public function getResponse()
     {
-        return $response = [
+        return [
             'package' => [
                 'name' => "simplesoftwareio/simple-qrcode",
                 'description' => "Simple QrCode is a QR code generator made for Laravel.",
@@ -152,7 +152,7 @@ class PackageTest extends TestCase
      */
     public function test_package_returns_the_correct_values_for_magic_methods($key)
     {
-        $this->assertEquals($this->mockPackage->$key(), $this->getResponse()['package'][$key]);
+        $this->assertEquals($this->getResponse()['package'][$key], $this->mockPackage->$key());
     }
 
     /**
@@ -160,7 +160,7 @@ class PackageTest extends TestCase
      */
     public function test_package_returns_the_correct_values_for_versions_numbers($key)
     {
-        $this->assertEquals($this->mockPackage->$key('dev-master'), $this->getResponse()['package']['versions']['dev-master'][$key]);
+        $this->assertEquals($this->getResponse()['package']['versions']['dev-master'][$key], $this->mockPackage->$key('dev-master'));
     }
 
     public function test_it_calls_the_correct_endpoint()
@@ -169,7 +169,7 @@ class PackageTest extends TestCase
 
         $endpoint = strval($this->history[0]['request']->getUri());
 
-        $this->assertEquals($endpoint, 'https://packagist.org/packages/simplesoftwareio/simple-qrcode.json');
+        $this->assertEquals('https://packagist.org/packages/simplesoftwareio/simple-qrcode.json', $endpoint);
     }
 
     /**
