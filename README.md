@@ -11,25 +11,25 @@ Simple Packagist
 
 <a id="docs-introduction"></a>
 ## Introduction
-Simple Packagist is a package for Laravel that retrieves statistics about any of the packages stored on the popular composer website Packagist.  Our aim is to provide an easy to use library to access this information.
+Simple Packagist is a package for Laravel that retrieves statistics about any of the packages stored on the popular composer website Packagist.  Our aim is to provide an easy-to-use library to access this information.
 
 <a id="docs-installation"></a>
 ## Installation
 
 #### Composer
 
-First, add the Simple QrCode package to your `require` in your `composer.json` file:
+First, add Simple Packagist as a `require` in your `composer.json` file:
 
 	"require": {
 		"simplesoftwareio/simple-packagist": "dev-master"
 	}
 
-Next, run the `composer install` command.
+After that has been added, run the `composer install` command.
 
 #### Service Provider
 
 ###### Laravel 5
-Register the `SimpleSoftwareIO\QrCode\PackagistServiceProvider::class` in your `config/app.php` within the `providers` array.
+Next, register the `SimpleSoftwareIO\QrCode\PackagistServiceProvider::class` in your `config/app.php` within the `providers` array.
 
 #### Aliases
 
@@ -39,7 +39,7 @@ Finally, register the `'Packagist' => SimpleSoftwareIO\QrCode\Facades\Packagist:
 <a id="docs-cache"></a>
 ## Cache
 
-All information retrieved from Packagist is stored within your application's configured cache for a default of 60 minutes.  You may configure the amount of time a package is cache for by adding the following to your `config/cache.php` file.
+All of the information retrieved from Packagist is stored within your application's configured cache for a default of 60 minutes.  You may configure the amount of time a package is cache for by adding the following to your `config/cache.php` file.
 
     'packagist' => [
         'length' => 45
@@ -48,11 +48,11 @@ All information retrieved from Packagist is stored within your application's con
 <a id="docs-usage"></a>
 ## Usage
 
-All methods return a [Laravel Collection.](https://laravel.com/docs/collections)  We highly recommend you read up upon collections and fully understand them to use this library.
+All methods return a [Laravel Collection.](https://laravel.com/docs/collections)  We highly recommend you read up on collections in order to fully understand them when using this library.
 
 #### All
 
-The all method returns a collection of all of the packages stored on Packagist.
+The `all` method returns a collection of all of the packages stored on Packagist.
 
     Packagist::all();
     
@@ -64,7 +64,7 @@ The all method returns a collection of all of the packages stored on Packagist.
         ...
     ]
     
-Each `Package` object within the collection can be used to retrieve more information about each package.  You can call a variaty of methods such as `get` to retrieve this information.
+Each `Package` object within the collection can be used to retrieve more information about each individual package.  You can call a variaty of methods such as `get` to retrieve this information.
 
     Packagist::all()->first()->get();
     
@@ -91,7 +91,7 @@ Each `Package` object within the collection can be used to retrieve more informa
 
 #### Vendor
 
-You may get all of the packages for a vendor by using the `vendor` method.
+You may get all of the packages for a specific vendor by using the `vendor` method.
 
     Packagist::vendor('simplesoftwareio');
     
@@ -118,7 +118,7 @@ You may get all of the packages for a vendor by using the `vendor` method.
       
 #### Type
 
-You can further get all of the packages of a certain type by using the `type` method.
+You can get all of the packages of a certain type by using the `type` method.
 
     Packagist::type('composer');
     
@@ -192,7 +192,7 @@ Retreiveing a package is also very easy.  Simply use the `package` method and th
 
 #### Get package information from a list of packages.
 
-`All`, `Vendor`, `Type`, and `Packages` return a Collection of `Package` object.  These objects can further be used to retrieve additional information about each package by calling the `get` method on them.  Calling the `get` method will fire off the API request to Packagist servers.
+`All`, `Vendor`, `Type`, and `Packages` return a Collection of the `Package` object.  These objects can further be used to retrieve additional information about each package by calling the `get` method on them.  Calling the `get` method will fire off an API request to the Packagist servers.
 
     $packages = Packagist::vendor('simplesoftwareio');
 
@@ -201,7 +201,7 @@ Retreiveing a package is also very easy.  Simply use the `package` method and th
         $package->get(); //Will retrieve all of the information for each package for this vendor.
     }
     
-You can get direct information by calling the appropriate method on the `Package` object.  For instance, you would run the following to get the amount of stars a package has.
+You can get specific information about a package by calling the appropriate method on the `Package` object.  For instance, you could run the following to get the amount of stars (favers) a package has.
 
     $packages = Packagist::vendor('simplesoftwareio');
 
@@ -210,7 +210,7 @@ You can get direct information by calling the appropriate method on the `Package
         $package->favers(); //The amount of stars each repo has.
     }
     
-The following is a helpful table that shows the possible methods that can be called.
+The following is a table of the methods that can currently be called: 
 
 |Method|Data Type|Returns|
 |---|---|---|
@@ -231,7 +231,7 @@ The following is a helpful table that shows the possible methods that can be cal
 |downloads|array|An array that contains `total`, `monthly`, and `daily` download counts.|
 |favors|integer|The amount of favors that this package has|
 
-#### Getting stats for a specific version number
+#### Getting information for a specific version number
 
 Some methods support the ability to get information for a specific version number.
 
@@ -239,7 +239,7 @@ Some methods support the ability to get information for a specific version numbe
     
     //Returns the description for version number 1.5.0 for simplesoftwareio/simple-qrcode
     
-The following supports passing in a version number:
+The following methods support passing in a version number:
 
 |Method|Data Type|Returns|
 |---|---|---|
@@ -252,14 +252,14 @@ The following supports passing in a version number:
 |license|array|Returns an array of licenses that the package is licensed under.|
 |authors|array|Returns an array of authors.|
 |source|array|Returns an array that contains the `type`, `url`, and `reference` of this version.|
-|dist|array|Returns the `type`, `url`, `referencee`, and `shasum` of this version.|
+|dist|array|Returns the `type`, `url`, `reference`, and `shasum` of this version.|
 |type|string|Returns the type for this version.|
 |time|string|Returns the time that this version was released|
 |autoload|array|Returns the type of autoloading that this package uses.|
 |require|array|Returns an array of dependencies.|
 |require-dev|array|Returns the development dependencies.|
 
-You do not have to use any of these helpers to retrieve the required information for a package.  The returns results from all of the methods are treated as an array.
+You do not have to use any of these helpers to retrieve the required information for a package.  The return from any of the methods are treated as an array.
 
     Packagist::package('simplesoftwareio', 'simple-qrcode')->get()['favers']
     //Will return the favors for the given package.
