@@ -1,39 +1,13 @@
 <?php
 
-use Mockery as m;
-use GuzzleHttp\Client;
-use GuzzleHttp\HandlerStack;
-use PHPUnit\Framework\TestCase;
-use GuzzleHttp\Middleware;
 use SimpleSoftwareIO\Packagist\Package;
-use Illuminate\Contracts\Cache\Factory as Cache;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\Psr7\Response;
 
-class PackageTest extends TestCase
+class PackageTest extends ManagerSetup
 {
     public function setUp()
     {
-        $cache = m::mock(Cache::class);
-
-        $mockRequest = new MockHandler([
-            new Response(200, [], json_encode($this->getResponse()))
-        ]);
-
-        $mockClient = new Client(['handler' => $mockRequest]);
-
-        $this->history = [];
-        $stack = HandlerStack::create();
-        $stack->push(Middleware::history($this->history));
-        $client = new Client(['handler' => $stack]);
-
-        $this->package = new Package($client, $cache, 0, 'simplesoftwareio', 'simple-qrcode');
-        $this->mockPackage = new Package($mockClient, $cache, 0, 'simplesoftwareio', 'simple-qrcode');
-    }
-
-    public function tearDown()
-    {
-        m::close();
+        $this->package = new Package($this->createManager(), 'simplesoftwareio', 'simple-qrcode');
+        $this->mockPackage = new Package($this->createMockManager(), 'simplesoftwareio', 'simple-qrcode');
     }
 
     public function packagistKeys()

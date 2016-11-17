@@ -21,15 +21,16 @@ class PackagistServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('packagist', function ($app) {
+        $manager = new Manager(new Client, $this->app['cache'], [
+            'cacheLength' => $this->app['config']->has('packagist.cache.length') ? $app['config']['packagist.cache.length'] : 60,
+            'numberFormatting' => $this->app['config']->has('packagist.formatting.enabled') ? $app['config']['packagist.formatting.enabled'] : true,
+            'numberDecimals' => $this->app['config']->has('packagist.formatting.decimals') ? $app['config']['packagist.formatting.decimals'] : 0,
+            'numberDecimalPoints' => $this->app['config']->has('packagist.formatting.decimal_points') ? $app['config']['packagist.formatting.decimal_points'] : '.',
+            'numberDecimalSeparator' => $this->app['config']->has('packagist.formatting.decimal_separator') ? $app['config']['packagist.formatting.decimal_separator'] : ',',
+        ]);
 
-            $cacheLength = $app['config']->has('cache.packagist.length') ? $app['config']['cache.packagist.length'] : 60;
-
-            return new Packagist(
-                new Client,
-                $app['cache'],
-                $cacheLength
-            );
+        $this->app->singleton('packagist', function () use ($manager) {
+            return new Packagist($manager);
         });
     }
 

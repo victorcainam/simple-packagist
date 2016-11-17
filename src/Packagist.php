@@ -8,37 +8,20 @@ use Illuminate\Contracts\Cache\Factory as Cache;
 class Packagist
 {
     /**
-     * The Guzzle Http Client.
+     * The Packagist manager.
      *
-     * @GuzzleHttp\Client
+     * @var Manager
      */
-    protected $client;
-
-    /**
-     * The Laravel Cache facade.
-     *
-     * @var Cache
-     */
-    protected $cache;
-
-    /**
-     * The amount of time to cache the results.
-     *
-     * @var integer
-     */
-    protected $cacheLength;
+    protected $manager;
 
     /**
      * Packagist constructor.
      *
-     * @param Client $client
-     * @param Cache $cache
+     * @param Manager $manager
      */
-    public function __construct(Client $client, Cache $cache, $cacheLength)
+    public function __construct(Manager $manager)
     {
-        $this->client = $client;
-        $this->cache = $cache;
-        $this->cacheLength = $cacheLength;
+        $this->manager = $manager;
     }
 
     /**
@@ -83,7 +66,7 @@ class Packagist
     {
         if (is_string($params)) $params = ['vendor' => $params];
 
-        return (new Packages($this->client, $this->cache, $this->cacheLength, $params))->get();
+        return (new Packages($this->manager, $params))->get();
     }
 
     /**
@@ -95,6 +78,6 @@ class Packagist
      */
     public function package($vendor, $package)
     {
-        return new Package($this->client, $this->cache, $this->cacheLength, $vendor, $package);
+        return new Package($this->manager, $vendor, $package);
     }
 }

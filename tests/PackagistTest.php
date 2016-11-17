@@ -4,6 +4,7 @@ use Mockery as m;
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 use Illuminate\Support\Collection;
+use SimpleSoftwareIO\Packagist\Manager;
 use SimpleSoftwareIO\Packagist\Package;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
@@ -13,9 +14,10 @@ class PackagistTest extends TestCase
     {
         $this->client = m::mock(Client::class);
         $this->cache = m::mock(Cache::class);
-        $cacheLength = 60;
 
-        $this->packagist = new SimpleSoftwareIO\Packagist\Packagist($this->client, $this->cache, $cacheLength);
+        $manager = new Manager($this->client, $this->cache, ['cacheLength' => 60]);
+
+        $this->packagist = new SimpleSoftwareIO\Packagist\Packagist($manager);
     }
 
     public function tearDown()

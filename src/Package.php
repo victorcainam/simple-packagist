@@ -11,25 +11,11 @@ class Package extends Request
     use MakeRequest;
 
     /**
-     * The Guzzle Http Client.
+     * The Packagist manager.
      *
-     * @GuzzleHttp\Client
+     * @var Manager
      */
-    protected $client;
-
-    /**
-     * The Laravel Cache facade.
-     *
-     * @var Cache
-     */
-    protected $cache;
-
-    /**
-     * The default cache length.
-     *
-     * @var integer
-     */
-    protected $cacheLength;
+    protected $manager;
 
     /**
      * The package's vendor.
@@ -55,17 +41,12 @@ class Package extends Request
     /**
      * Package constructor.
      *
-     * @param Client $client
-     * @param Cache $cache
-     * @param $cacheLength
-     * @param string $vendor
+     * @param Manager $manager
      * @param string $package
      */
-    public function __construct(Client $client, Cache $cache, $cacheLength, $vendor, $package)
+    public function __construct(Manager $manager, $vendor, $package)
     {
-        $this->client = $client;
-        $this->cache = $cache;
-        $this->cacheLength = $cacheLength;
+        $this->manager = $manager;
         $this->vendor = $vendor;
         $this->package = $package;
     }
@@ -98,7 +79,7 @@ class Package extends Request
      */
     public function downloads($version = null)
     {
-        $downloads = new Downloads($this->client, $this->cache, $this->cacheLength, $this->vendor, $this->package);
+        $downloads = new Downloads($this->manager, $this->vendor, $this->package);
 
         if ( ! empty($version)) return $downloads->get()['versions'][$version];
 

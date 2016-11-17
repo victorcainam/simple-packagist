@@ -22,9 +22,9 @@ trait MakeRequest
 
         $key = $this->create_key($this->endPoint(), $params);
 
-        if ( ! $this->cacheLength) return $this->fetch($params);
+        if ( ! $this->manager->getConfig('cacheLength')) return $this->fetch($params);
 
-        return $this->cache->remember($key, $this->cacheLength, function() use ($params) {
+        return $this->manager->getCache()->remember($key, $this->manager->getConfig('cacheLength'), function() use ($params) {
             return $this->fetch($params);
         });
     }
@@ -37,7 +37,7 @@ trait MakeRequest
      */
     protected function fetch($params)
     {
-        $response = $this->client->get($this->endPoint(), [
+        $response = $this->manager->getClient()->get($this->endPoint(), [
             'query' => $params
         ]);
 

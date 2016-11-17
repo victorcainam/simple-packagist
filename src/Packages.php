@@ -11,25 +11,11 @@ class Packages extends Request
     use MakeRequest;
 
     /**
-     * The Guzzle Http Client.
+     * The Packagist manager.
      *
-     * @GuzzleHttp\Client
+     * @var Manager
      */
-    protected $client;
-
-    /**
-     * The Laravel Cache facade.
-     *
-     * @var Cache
-     */
-    protected $cache;
-
-    /**
-     * The default cache length.
-     *
-     * @var integer
-     */
-    protected $cacheLength;
+    protected $manager;
 
     /**
      * The search parameters.
@@ -49,16 +35,12 @@ class Packages extends Request
      * Constructs the Packages object.
      *
      * Packages constructor.
-     * @param Client $client
-     * @param Cache $cache
-     * @param $cacheLength
+     * @param Manager $manager
      * @param array $params
      */
-    public function __construct(Client $client, Cache $cache, $cacheLength, array $params)
+    public function __construct(Manager $manager, array $params)
     {
-        $this->client = $client;
-        $this->cache = $cache;
-        $this->cacheLength = $cacheLength;
+        $this->manager = $manager;
         $this->params = $params;
     }
 
@@ -99,7 +81,7 @@ class Packages extends Request
     {
         $split = explode('/', $package);
 
-        return new Package($this->client, $this->cache, $this->cacheLength, $split[0], $split[1]);
+        return new Package($this->manager, $split[0], $split[1]);
     }
 
     /**

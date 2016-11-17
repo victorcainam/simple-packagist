@@ -11,25 +11,11 @@ class Downloads extends Request
     use MakeRequest;
 
     /**
-     * The Guzzle Http Client.
+     * The Packagist manager.
      *
-     * @GuzzleHttp\Client
+     * @var Manager
      */
-    protected $client;
-
-    /**
-     * The Laravel Cache facade.
-     *
-     * @var Cache
-     */
-    protected $cache;
-
-    /**
-     * The default cache length.
-     *
-     * @var integer
-     */
-    protected $cacheLength;
+    protected $manager;
 
     /**
      * The package's vendor.
@@ -55,17 +41,13 @@ class Downloads extends Request
     /**
      * Downloads constructor.
      *
-     * @param Client $client
-     * @param Cache $cache
-     * @param $cacheLength
+     * @param $manager
      * @param $vendor
      * @param $package
      */
-    public function __construct(Client $client, Cache $cache, $cacheLength, $vendor, $package)
+    public function __construct(Manager $manager, $vendor, $package)
     {
-        $this->client = $client;
-        $this->cache = $cache;
-        $this->cacheLength = $cacheLength;
+        $this->manager = $manager;
         $this->vendor = $vendor;
         $this->package = $package;
     }
