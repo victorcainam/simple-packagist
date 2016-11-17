@@ -72,7 +72,7 @@ class PackageTest extends ManagerSetup
                             'keyword2',
                         ],
                         'homepage' => 'https://www.simplesoftware.io',
-                        'version' => 'dev-masster',
+                        'version' => 'dev-master',
                         'version_normalized' => '9999999-dev',
                         'license' => [
                             'MIT',
