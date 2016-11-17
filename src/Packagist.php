@@ -2,9 +2,6 @@
 
 namespace SimpleSoftwareIO\Packagist;
 
-use GuzzleHttp\Client;
-use Illuminate\Contracts\Cache\Factory as Cache;
-
 class Packagist
 {
     /**

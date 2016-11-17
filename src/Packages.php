@@ -2,8 +2,6 @@
 
 namespace SimpleSoftwareIO\Packagist;
 
-use GuzzleHttp\Client;
-use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Support\Collection;
 
 class Packages extends Request
