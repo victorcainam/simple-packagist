@@ -11,5 +11,8 @@ class Packagist extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'packagist'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'packagist';
+    }
 }

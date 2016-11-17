@@ -43,7 +43,7 @@ class Manager
     }
 
     /**
-     * Returns the Guzzle HTTP Client
+     * Returns the Guzzle HTTP Client.
      *
      * @return Client
      */
@@ -53,7 +53,7 @@ class Manager
     }
 
     /**
-     * Returns the Laravel Cache Manager
+     * Returns the Laravel Cache Manager.
      *
      * @return Cache
      */
@@ -63,14 +63,16 @@ class Manager
     }
 
     /**
-     * Returns the requested configuration variable
+     * Returns the requested configuration variable.
      *
      * @param $key
      * @return mixed
      */
     public function getConfig($key)
     {
-        if (! isset($this->config[$key])) return null;
+        if (! isset($this->config[$key])) {
+            return;
+        }
 
         return $this->config[$key];
     }

@@ -15,7 +15,7 @@ class DownloadsTest extends ManagerSetup
         return [
             ['total'],
             ['monthly'],
-            ['daily']
+            ['daily'],
         ];
     }
 
@@ -33,11 +33,11 @@ class DownloadsTest extends ManagerSetup
                         'dev-master' => [
                             'total' => 1,
                             'monthly' => 1,
-                            'daily' => 1
-                        ]
-                    ]
-                ]
-            ]
+                            'daily' => 1,
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
