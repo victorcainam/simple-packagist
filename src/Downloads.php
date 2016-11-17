@@ -74,5 +74,4 @@ class Downloads extends Request
     {
         return "{$this->endPoint}/{$this->vendor}/{$this->package}/downloads.json";
     }
-
 }

@@ -61,7 +61,9 @@ class Packagist
      */
     public function packages($params = [])
     {
-        if (is_string($params)) $params = ['vendor' => $params];
+        if (is_string($params)) {
+            $params = ['vendor' => $params];
+        }
 
         return (new Packages($this->manager, $params))->get();
     }

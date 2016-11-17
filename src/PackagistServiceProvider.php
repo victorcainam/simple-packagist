@@ -43,5 +43,4 @@ class PackagistServiceProvider extends ServiceProvider
     {
         return ['packagist'];
     }
-
 }

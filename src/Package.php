@@ -79,7 +79,9 @@ class Package extends Request
     {
         $downloads = new Downloads($this->manager, $this->vendor, $this->package);
 
-        if ( ! empty($version)) return $downloads->get()['versions'][$version];
+        if (! empty($version)) {
+            return $downloads->get()['versions'][$version];
+        }
 
         return $downloads->get();
     }
@@ -93,7 +95,9 @@ class Package extends Request
      */
     public function __call($name, array $version)
     {
-        if ( ! empty($version)) return $this->get()['versions'][$version[0]][$name];
+        if (! empty($version)) {
+            return $this->get()['versions'][$version[0]][$name];
+        }
 
         return $this->get()[$name];
     }

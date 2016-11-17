@@ -27,7 +27,7 @@ class PackageTest extends ManagerSetup
             ['language'],
             ['dependents'],
             ['suggesters'],
-            ['favers']
+            ['favers'],
         ];
     }
 
@@ -48,7 +48,7 @@ class PackageTest extends ManagerSetup
             ['time'],
             ['autoload'],
             ['require'],
-            ['require-dev']
+            ['require-dev'],
         ];
     }
 
@@ -56,56 +56,56 @@ class PackageTest extends ManagerSetup
     {
         return [
             'package' => [
-                'name' => "simplesoftwareio/simple-qrcode",
-                'description' => "Simple QrCode is a QR code generator made for Laravel.",
-                'time' => "2014-06-09T22:37:43+00:00",
+                'name' => 'simplesoftwareio/simple-qrcode',
+                'description' => 'Simple QrCode is a QR code generator made for Laravel.',
+                'time' => '2014-06-09T22:37:43+00:00',
                 'maintainers' => [
                     'name' => 'SimplyCorey',
-                    'name' => 'SimplyThomas'
+                    'name' => 'SimplyThomas',
                 ],
                 'versions' => [
                     'dev-master' => [
-                        'name' => "simplesoftwareio/simple-qrcode",
-                        'description' => "Simple QrCode is a QR code generator made for Laravel.",
+                        'name' => 'simplesoftwareio/simple-qrcode',
+                        'description' => 'Simple QrCode is a QR code generator made for Laravel.',
                         'keywords' => [
                             'keyword1',
-                            'keyword2'
+                            'keyword2',
                         ],
                         'homepage' => 'https://www.simplesoftware.io',
                         'version' => 'dev-masster',
                         'version_normalized' => '9999999-dev',
                         'license' => [
-                            'MIT'
+                            'MIT',
                         ],
                         'authors' => [
                             'name' => 'Simple Software LLC',
-                            'email' => 'support@simplesoftware.io'
+                            'email' => 'support@simplesoftware.io',
                         ],
                         'source' => [
                             'type' => 'git',
                             'url' => 'https://github.com/SimpleSoftwareIO/simple-qrcode.git',
-                            'reference' => '49266b1c6aa94bd5ddcdaba74f7b3e6956a82c01'
+                            'reference' => '49266b1c6aa94bd5ddcdaba74f7b3e6956a82c01',
                         ],
                         'dist' => [
                             'type' => 'zip',
                             'url' => 'https://api.github.com/repos/SimpleSoftwareIO/simple-qrcode/zipball/49266b1c6aa94bd5ddcdaba74f7b3e6956a82c01',
                             'reference' => '49266b1c6aa94bd5ddcdaba74f7b3e6956a82c01',
-                            'shasum' => ''
+                            'shasum' => '',
                         ],
                         'type' => 'library',
                         'time' => '2016-10-18T00:27:02+00:00',
                         'autoload' => [
                             'psr-0' => [
-                                'SimpleSoftwareIO\\QrCode\\' => 'src'
-                            ]
+                                'SimpleSoftwareIO\\QrCode\\' => 'src',
+                            ],
                         ],
                         'require' => [
-                            'php' => '>=5.4.0'
+                            'php' => '>=5.4.0',
                         ],
                         'require-dev' => [
-                            'phpunit/phpuit' => '~5'
-                        ]
-                    ]
+                            'phpunit/phpuit' => '~5',
+                        ],
+                    ],
                 ],
                 'type' => 'library',
                 'repository' => 'https://github.com/SimpleSoftwareIO/simple-qrcode',
@@ -116,8 +116,8 @@ class PackageTest extends ManagerSetup
                 'language' => 'PHP',
                 'dependents' => 5,
                 'suggesters' => 0,
-                'favers' => 1
-            ]
+                'favers' => 1,
+            ],
         ];
     }
 

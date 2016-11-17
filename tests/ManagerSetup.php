@@ -13,7 +13,7 @@ use SimpleSoftwareIO\Packagist\Manager;
 abstract class ManagerSetup extends TestCase
 {
     /**
-     * Creates a Manager class with a mocked out Guzzle Client
+     * Creates a Manager class with a mocked out Guzzle Client.
      *
      * @return Manager
      */
@@ -22,7 +22,7 @@ abstract class ManagerSetup extends TestCase
         $cache = m::mock(Cache::class);
 
         $mockRequest = new MockHandler([
-            new Response(200, [], json_encode($this->getResponse()))
+            new Response(200, [], json_encode($this->getResponse())),
         ]);
 
         $mockClient = new Client(['handler' => $mockRequest]);
@@ -31,7 +31,7 @@ abstract class ManagerSetup extends TestCase
     }
 
     /**
-     * Creates a Manager class without a Mocked out Guzzle Client
+     * Creates a Manager class without a Mocked out Guzzle Client.
      *
      * @return Manager
      */
@@ -58,7 +58,7 @@ abstract class ManagerSetup extends TestCase
     }
 
     /**
-     * Tears down the Unit Tests
+     * Tears down the Unit Tests.
      */
     public function tearDown()
     {

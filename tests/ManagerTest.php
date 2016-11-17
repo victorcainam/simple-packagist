@@ -14,7 +14,7 @@ class ManagerTest extends TestCase
         $cache = m::mock(Cache::class);
 
         $config = [
-            'cacheLength' => 60
+            'cacheLength' => 60,
         ];
 
         $this->manager = new SimpleSoftwareIO\Packagist\Manager($client, $cache, $config);
