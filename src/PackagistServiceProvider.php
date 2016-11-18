@@ -21,17 +21,27 @@ class PackagistServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $manager = new Manager(new Client, $this->app['cache'], [
-            'cacheLength' => $this->app['config']->has('packagist.cache.length') ? $app['config']['packagist.cache.length'] : 60,
-            'numberFormatting' => $this->app['config']->has('packagist.formatting.enabled') ? $app['config']['packagist.formatting.enabled'] : true,
-            'numberDecimals' => $this->app['config']->has('packagist.formatting.decimals') ? $app['config']['packagist.formatting.decimals'] : 0,
-            'numberDecimalPoints' => $this->app['config']->has('packagist.formatting.decimal_points') ? $app['config']['packagist.formatting.decimal_points'] : '.',
-            'numberDecimalSeparator' => $this->app['config']->has('packagist.formatting.decimal_separator') ? $app['config']['packagist.formatting.decimal_separator'] : ',',
-        ]);
+        $this->mergeConfigFrom(
+            __DIR__.'/config/packagist.php', 'packagist'
+        );
+
+        $manager = new Manager(new Client, $this->app['cache'], $this->app->config['packagist']);
 
         $this->app->singleton('packagist', function () use ($manager) {
             return new Packagist($manager);
         });
+    }
+
+    /**
+     * Boots the service provider.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/config/packagist.php' => config_path('packagist.php'),
+        ]);
     }
 
     /**
@@ -41,6 +51,6 @@ class PackagistServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['packagist'];
+        return [Packagist::class];
     }
 }
