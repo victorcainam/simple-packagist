@@ -20,13 +20,13 @@ trait MakeRequest
     {
         $params = isset($this->params) ? $this->params : null;
 
-        $key = $this->create_key($this->endPoint(), $params);
-
-        if (! $this->manager->getConfig('cacheLength')) {
+        if (! $this->manager->getConfig('cache.enable')) {
             return $this->fetch($params);
         }
 
-        return $this->manager->getCache()->remember($key, $this->manager->getConfig('cacheLength'), function () use ($params) {
+        $key = $this->create_key($this->endPoint(), $params);
+
+        return $this->manager->getCache()->remember($key, $this->manager->getConfig('cache.length'), function () use ($params) {
             return $this->fetch($params);
         });
     }
