@@ -70,10 +70,6 @@ class Manager
      */
     public function getConfig($key)
     {
-        if (! isset($this->config[$key])) {
-            return;
-        }
-
-        return $this->config[$key];
+        return array_get($this->config, $key);
     }
 }

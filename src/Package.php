@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 
 class Package extends Request
 {
-    use MakeRequest;
+    use Formats, MakeRequest;
 
     /**
      * The Packagist manager.
@@ -56,7 +56,11 @@ class Package extends Request
      */
     public function get()
     {
-        return new Collection($this->request()['package']);
+        return new Collection(
+            $this->format(
+                $this->request()['package']
+            )
+        );
     }
 
     /**

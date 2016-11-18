@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 
 class Downloads extends Request
 {
-    use MakeRequest;
+    use Formats, MakeRequest;
 
     /**
      * The Packagist manager.
@@ -57,7 +57,9 @@ class Downloads extends Request
      */
     public function get()
     {
-        $response = $this->request()['package']['downloads'];
+        $response = $this->format(
+            $this->request()['package']['downloads']
+        );
 
         $collection = new Collection($response['total']);
         $collection = $collection->merge(['versions' => $response['versions']]);
