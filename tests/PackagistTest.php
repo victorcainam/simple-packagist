@@ -15,7 +15,7 @@ class PackagistTest extends TestCase
         $this->client = m::mock(Client::class);
         $this->cache = m::mock(Cache::class);
 
-        $manager = new Manager($this->client, $this->cache, ['cacheLength' => 60]);
+        $manager = new Manager($this->client, $this->cache, ['cache' => ['enable' => true]]);
 
         $this->packagist = new SimpleSoftwareIO\Packagist\Packagist($manager);
     }
