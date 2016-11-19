@@ -49,7 +49,7 @@ class FormatTest extends TestCase
                 'total' => 1000,
                 'monthly' => 10,
                 'daily' => 1,
-            ]
+            ],
         ];
 
         $formattedResponse = [
@@ -58,7 +58,7 @@ class FormatTest extends TestCase
                 'total' => '1,000',
                 'monthly' => '10',
                 'daily' => '1',
-            ]
+            ],
         ];
 
         $this->assertSame($formattedResponse, $this->format->format($response));
