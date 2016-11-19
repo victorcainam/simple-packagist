@@ -1,11 +1,11 @@
 Simple Packagist
 ================
 
-[![Build Status](https://travis-ci.org/SimpleSoftwareIO/simple-qrcode.svg?branch=master)](https://travis-ci.org/SimpleSoftwareIO/simple-packagist)
-[![Latest Stable Version](https://poser.pugx.org/simplesoftwareio/simple-qrcode/v/stable.svg)](https://packagist.org/packages/simplesoftwareio/simple-packagist)
-[![Latest Unstable Version](https://poser.pugx.org/simplesoftwareio/simple-qrcode/v/unstable.svg)](https://packagist.org/packages/simplesoftwareio/simple-packagist)
-[![License](https://poser.pugx.org/simplesoftwareio/simple-qrcode/license.svg)](https://packagist.org/packages/simplesoftwareio/simple-packagist)
-[![Total Downloads](https://poser.pugx.org/simplesoftwareio/simple-qrcode/downloads.svg)](https://packagist.org/packages/simplesoftwareio/simple-packagist)
+[![Build Status](https://travis-ci.org/SimpleSoftwareIO/simple-packagist.svg?branch=master)](https://travis-ci.org/SimpleSoftwareIO/simple-packagist)
+[![Latest Stable Version](https://poser.pugx.org/simplesoftwareio/simple-packagist/v/stable.svg)](https://packagist.org/packages/simplesoftwareio/simple-packagist)
+[![Latest Unstable Version](https://poser.pugx.org/simplesoftwareio/simple-packagist/v/unstable.svg)](https://packagist.org/packages/simplesoftwareio/simple-packagist)
+[![License](https://poser.pugx.org/simplesoftwareio/simple-packagist/license.svg)](https://packagist.org/packages/simplesoftwareio/simple-packagist)
+[![Total Downloads](https://poser.pugx.org/simplesoftwareio/simple-packagist/downloads.svg)](https://packagist.org/packages/simplesoftwareio/simple-packagist)
 [![StyleCI](https://styleci.io/repos/60654618/shield?branch=develop)](https://styleci.io/repos/60654618)
 
 ##This is pre-release software. The API may change.  Use at your own risk.
