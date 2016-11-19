@@ -10,7 +10,7 @@ trait Formats
      * @param $value
      * @return mixed
      */
-    protected function format($value)
+    public function format($value)
     {
         if (! $this->manager->getConfig('formatting.enable')) {
             return $value;
@@ -35,6 +35,8 @@ trait Formats
         if (is_int($value)) {
             $value = $this->format_number($value);
         }
+
+        return $value;
     }
 
     /**
