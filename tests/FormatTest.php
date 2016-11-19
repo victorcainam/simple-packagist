@@ -48,7 +48,7 @@ class FormatTest extends TestCase
             'downloads' => [
                 'total' => 1000,
                 'monthly' => 10,
-                'daily' => 1
+                'daily' => 1,
             ]
         ];
 
@@ -57,7 +57,7 @@ class FormatTest extends TestCase
             'downloads' => [
                 'total' => '1,000',
                 'monthly' => '10',
-                'daily' => '1'
+                'daily' => '1',
             ]
         ];
 
@@ -68,7 +68,7 @@ class FormatTest extends TestCase
     {
         $args = func_get_args();
 
-        switch($args[0]) {
+        switch ($args[0]) {
             case 'formatting.enable':
                 return true;
 
