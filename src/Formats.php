@@ -29,10 +29,11 @@ trait Formats
      * Transforms a value into the correct format.
      *
      * @param $value
+     * @return string
      */
     protected function transform(&$value)
     {
-        if (is_int($value)) {
+        if (is_numeric($value)) {
             $value = $this->format_number($value);
         }
 
