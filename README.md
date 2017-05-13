@@ -8,13 +8,13 @@ Simple Packagist
 [![Total Downloads](https://poser.pugx.org/simplesoftwareio/simple-packagist/downloads.svg)](https://packagist.org/packages/simplesoftwareio/simple-packagist)
 [![StyleCI](https://styleci.io/repos/60654618/shield?branch=develop)](https://styleci.io/repos/60654618)
 
-##This is pre-release software. The API may change.  Use at your own risk.
+## This is pre-release software. The API may change.  Use at your own risk.
 
 - [Introduction](#docs-introduction)
 - [Installation](#docs-installation)
 - [Cache](#docs-cache)
 - [Usage](#docs-usage)
-- [Advance Usage](#docs-advance-usage)
+- [Advanced Usage](#docs-advanced-usage)
 
 <a id="docs-introduction"></a>
 ## Introduction
@@ -194,8 +194,8 @@ Retreiveing a package is also very easy.  Simply use the `package` method and th
         ]
       }
       
-<a id="docs-advance-usage"></a>
-## Advance Usage
+<a id="docs-advanced-usage"></a>
+## Advanced Usage
 
 #### Get package information from a list of packages.
 
