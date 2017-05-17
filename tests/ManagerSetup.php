@@ -1,13 +1,13 @@
 <?php
 
-use Mockery as m;
 use GuzzleHttp\Client;
-use GuzzleHttp\HandlerStack;
-use PHPUnit\Framework\TestCase;
-use GuzzleHttp\Middleware;
-use Illuminate\Contracts\Cache\Factory as Cache;
 use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
+use Illuminate\Contracts\Cache\Factory as Cache;
+use Mockery as m;
+use PHPUnit\Framework\TestCase;
 use SimpleSoftwareIO\Packagist\Manager;
 
 abstract class ManagerSetup extends TestCase

@@ -1,12 +1,12 @@
 <?php
 
-use Mockery as m;
 use GuzzleHttp\Client;
-use PHPUnit\Framework\TestCase;
+use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Support\Collection;
+use Mockery as m;
+use PHPUnit\Framework\TestCase;
 use SimpleSoftwareIO\Packagist\Manager;
 use SimpleSoftwareIO\Packagist\Package;
-use Illuminate\Contracts\Cache\Factory as Cache;
 
 class PackagistTest extends TestCase
 {

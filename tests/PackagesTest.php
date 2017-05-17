@@ -1,7 +1,7 @@
 <?php
 
-use SimpleSoftwareIO\Packagist\Packages;
 use Illuminate\Support\Collection;
+use SimpleSoftwareIO\Packagist\Packages;
 
 class PackagesTest extends ManagerSetup
 {

@@ -35,6 +35,7 @@ class Packagist
      * Gets all of the packages on Packagist for a vendor.
      *
      * @param $vendor
+     *
      * @return Collection
      */
     public function vendor($vendor)
@@ -46,6 +47,7 @@ class Packagist
      * Searches Packagist for all packages of a type.
      *
      * @param $type
+     *
      * @return Collection
      */
     public function type($type)
@@ -57,6 +59,7 @@ class Packagist
      * Gets all packages for the matching params.
      *
      * @param array $params
+     *
      * @return Packages
      */
     public function packages($params = [])
@@ -73,6 +76,7 @@ class Packagist
      *
      * @param $vendor
      * @param $package
+     *
      * @return Package
      */
     public function package($vendor, $package)
