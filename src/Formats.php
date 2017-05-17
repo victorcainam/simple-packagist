@@ -8,11 +8,12 @@ trait Formats
      * Formats the results using the configuration.
      *
      * @param $value
+     *
      * @return mixed
      */
     public function format($value)
     {
-        if (! $this->manager->getConfig('formatting.enable')) {
+        if (!$this->manager->getConfig('formatting.enable')) {
             return $value;
         }
 
@@ -29,6 +30,7 @@ trait Formats
      * Transforms a value into the correct format.
      *
      * @param $value
+     *
      * @return string
      */
     protected function transform(&$value)
@@ -44,6 +46,7 @@ trait Formats
      * Formats a number using the configuration.
      *
      * @param $number
+     *
      * @return string
      */
     protected function format_number($number)

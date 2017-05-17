@@ -7,9 +7,9 @@ return [
     ],
 
     'formatting' => [
-        'enable' => false,
-        'decimals' => 0,
-        'dec_point' => '.',
+        'enable'        => false,
+        'decimals'      => 0,
+        'dec_point'     => '.',
         'thousands_sep' => ',',
     ],
 ];

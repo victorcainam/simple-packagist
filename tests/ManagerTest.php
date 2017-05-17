@@ -1,10 +1,9 @@
 <?php
 
-use Mockery as m;
 use GuzzleHttp\Client;
-use PHPUnit\Framework\TestCase;
-use SimpleSoftwareIO\Packagist\Manager;
 use Illuminate\Contracts\Cache\Factory as Cache;
+use Mockery as m;
+use PHPUnit\Framework\TestCase;
 
 class ManagerTest extends TestCase
 {

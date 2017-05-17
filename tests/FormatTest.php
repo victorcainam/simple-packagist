@@ -44,20 +44,20 @@ class FormatTest extends TestCase
             ->will($this->returnCallback([$this, 'getConfig']));
 
         $response = [
-            'favers' => 1000,
+            'favers'    => 1000,
             'downloads' => [
-                'total' => 1000,
+                'total'   => 1000,
                 'monthly' => 10,
-                'daily' => 1,
+                'daily'   => 1,
             ],
         ];
 
         $formattedResponse = [
-            'favers' => '1,000',
+            'favers'    => '1,000',
             'downloads' => [
-                'total' => '1,000',
+                'total'   => '1,000',
                 'monthly' => '10',
-                'daily' => '1',
+                'daily'   => '1',
             ],
         ];
 

@@ -32,8 +32,8 @@ class Manager
      * Manager constructor.
      *
      * @param Client $client
-     * @param Cache $cache
-     * @param array $config
+     * @param Cache  $cache
+     * @param array  $config
      */
     public function __construct(Client $client, Cache $cache, array $config = [])
     {
@@ -66,6 +66,7 @@ class Manager
      * Returns the requested configuration variable.
      *
      * @param $key
+     *
      * @return mixed
      */
     public function getConfig($key)

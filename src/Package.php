@@ -40,7 +40,7 @@ class Package extends Request
      * Package constructor.
      *
      * @param Manager $manager
-     * @param string $package
+     * @param string  $package
      */
     public function __construct(Manager $manager, $vendor, $package)
     {
@@ -77,13 +77,14 @@ class Package extends Request
      * Returns a collection containing the downloads.
      *
      * @param null|string $version
+     *
      * @return Collection
      */
     public function downloads($version = null)
     {
         $downloads = new Downloads($this->manager, $this->vendor, $this->package);
 
-        if (! empty($version)) {
+        if (!empty($version)) {
             return $downloads->get()['versions'][$version];
         }
 
@@ -94,12 +95,13 @@ class Package extends Request
      * Used to retrieve different statistics about a package.
      *
      * @param string $name
-     * @param array $version
+     * @param array  $version
+     *
      * @return mixed
      */
     public function __call($name, array $version)
     {
-        if (! empty($version)) {
+        if (!empty($version)) {
             return $this->get()['versions'][$version[0]][$name];
         }
 

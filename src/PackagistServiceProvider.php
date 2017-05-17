@@ -25,7 +25,7 @@ class PackagistServiceProvider extends ServiceProvider
             __DIR__.'/config/packagist.php', 'packagist'
         );
 
-        $manager = new Manager(new Client, $this->app['cache'], $this->app->config['packagist']);
+        $manager = new Manager(new Client(), $this->app['cache'], $this->app->config['packagist']);
 
         $this->app->singleton('packagist', function () use ($manager) {
             return new Packagist($manager);

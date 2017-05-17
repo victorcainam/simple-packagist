@@ -20,7 +20,7 @@ trait MakeRequest
     {
         $params = isset($this->params) ? $this->params : null;
 
-        if (! $this->manager->getConfig('cache.enable')) {
+        if (!$this->manager->getConfig('cache.enable')) {
             return $this->fetch($params);
         }
 
@@ -35,6 +35,7 @@ trait MakeRequest
      * Performs the Guzzle request to the endpoint with the params.
      *
      * @param $params
+     *
      * @return mixed
      */
     protected function fetch($params)
@@ -51,6 +52,7 @@ trait MakeRequest
      *
      * @param $endPoint
      * @param $params
+     *
      * @return string
      */
     protected function create_key($endPoint, $params)

@@ -25,15 +25,15 @@ class DownloadsTest extends ManagerSetup
             'package' => [
                 'downloads' => [
                     'total' => [
-                        'total' => 1,
+                        'total'   => 1,
                         'monthly' => 1,
-                        'daily' => 1,
+                        'daily'   => 1,
                     ],
                     'versions' => [
                         'dev-master' => [
-                            'total' => 1,
+                            'total'   => 1,
                             'monthly' => 1,
-                            'daily' => 1,
+                            'daily'   => 1,
                         ],
                     ],
                 ],

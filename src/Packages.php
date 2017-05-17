@@ -33,8 +33,9 @@ class Packages extends Request
      * Constructs the Packages object.
      *
      * Packages constructor.
+     *
      * @param Manager $manager
-     * @param array $params
+     * @param array   $params
      */
     public function __construct(Manager $manager, array $params)
     {
@@ -73,6 +74,7 @@ class Packages extends Request
      * Creates the Package objects.
      *
      * @param $package
+     *
      * @return Package
      */
     public function package($package)
